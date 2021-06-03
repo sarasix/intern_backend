@@ -1,26 +1,23 @@
 const express = require("express");
 const echoRoute = require("./controller/Echo");
 const todoRoute = require("./controller/Todo");
-const userRoute = require("./controller/User");
+
 const { connectDB, disconnectDB } = require("./dbutil");
 const httpShutdown = require("http-shutdown");
-const bodyParser = require("body-parser");
+
 
 const main = async () => {
 	var app = express();
+	await connectDB();
+	var server = httpShutdown(app.listen(3000));
+	
 
-	//body parser
-	app.use(bodyParser.urlencoded({ extended: false }));
-	app.use(bodyParser.json());
 
 	app.use("/echo", echoRoute);
 	app.use("/todos", todoRoute);
-	app.use("/", userRoute);
+	
 
-	await connectDB();
-	var server = httpShutdown(app.listen(3000));
 
-	// graceful shutdown
 	var called = false;
 	const shutdown = () => {
 		if (called) return;
