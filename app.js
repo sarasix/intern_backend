@@ -13,8 +13,8 @@ const main = async () => {
 	
 
 
-	app.use("/echo", echoRoute);
-	app.use("/todos", todoRoute);
+	app.use("/app/echo", echoRoute);
+	app.use("/app/todos", todoRoute);
 	
 
 
