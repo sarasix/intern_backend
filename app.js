@@ -14,7 +14,7 @@ const main = async () => {
 
 
 	app.use("/app/echo", echoRoute);
-	app.use("/app/todos", todoRoute);
+	app.use("/no_auth/todos", todoRoute);
 	
 
 

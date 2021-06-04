@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { connectDB, disconnectDB } = require("../dbutil");
+var bodyParser = require('body-parser')
 
 router.get("/", async (req, res) => {
 	res.send('Hello World!');
@@ -17,14 +17,14 @@ router.get("/echo_qs", async (req, res) => {
 
 });
 router.get("/echo_params/:params", async (req, res) => {
-	const { params } = req.params;
-	res.json({ params})
+	const {params}  = req.params;
+	res.json({params})
 
 });
 
 
 router.post("/echo_post", async (req, res) => {
-	const {body} = req.body
+	const body = req.body
 	res.json(body)
 
 });
