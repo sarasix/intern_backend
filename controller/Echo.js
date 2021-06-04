@@ -12,19 +12,19 @@ router.get("/echo_get", async (req, res) => {
 
 });
 router.get("/echo_qs", async (req, res) => {
-	const {qs } = req.query;
+	const qs = req.query;
 	res.json(qs)
 
 });
 router.get("/echo_params/:params", async (req, res) => {
 	const { params } = req.params;
-	res.json({params : params})
+	res.json({ params})
 
 });
 
 
 router.post("/echo_post", async (req, res) => {
-	const {body} = req.bosy
+	const {body} = req.body
 	res.json(body)
 
 });
